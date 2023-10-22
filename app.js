@@ -1,4 +1,45 @@
-let listaEmpleados = [];
+// Console.log DE PRUEBA PARA LOCAL STORAGE
+// console.log(JSON.parse(localStorage.getItem("list")))
+
+const lst = JSON.parse(localStorage.getItem("list"))
+// console.log(lst)
+
+function mostrarEmpleadosLS() {
+    const divEmpleados = document.querySelector('.div-empleados');
+
+    lst.forEach(empleado => {
+        const {id, nombre, puesto} = empleado;
+
+        const parrafo = document.createElement('p');
+        parrafo.textContent = `${id} - ${nombre} - ${puesto} - `;
+        parrafo.dataset.id = id;
+
+        const editarBoton = document.createElement('button');
+        editarBoton.onclick = () => cargarEmpleado(empleado);
+        editarBoton.textContent = 'Editar';
+        editarBoton.classList.add('btn', 'btn-editar');
+        parrafo.append(editarBoton);
+
+        const eliminarBoton = document.createElement('button');
+        eliminarBoton.onclick = () => eliminarEmpleado(id);
+        eliminarBoton.textContent = 'Eliminar';
+        eliminarBoton.classList.add('btn', 'btn-eliminar');
+        parrafo.append(eliminarBoton);
+
+        const hr = document.createElement('hr');
+
+        divEmpleados.appendChild(parrafo);
+        divEmpleados.appendChild(hr);
+    });
+}
+
+if (lst!==null){
+    mostrarEmpleadosLS()
+}
+
+if (lst===null){
+   listaEmpleados = [];
+} else listaEmpleados = lst
 
 const objEmpleado = {
     id: '',
@@ -80,7 +121,7 @@ function mostrarEmpleados() {
 
         divEmpleados.appendChild(parrafo);
         divEmpleados.appendChild(hr);
-        
+        localStorage.setItem("list", JSON.stringify(listaEmpleados)) 
 
     });
 }
@@ -129,6 +170,10 @@ function eliminarEmpleado(id) {
 
     limpiarHTML();
     mostrarEmpleados();
+    if (listaEmpleados.length === 0) {
+        localStorage.removeItem("list")
+    }
+    
 }
 
 function limpiarHTML() {
