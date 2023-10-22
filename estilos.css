@@ -122,3 +122,58 @@ hr {
     background-color: red;
 }
 
+/* FOOTER */
+.card{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: rgb(97, 61, 9);
+    color: rgb(227, 191, 191);
+}
+
+.logo{
+    width: 100px;
+    padding-top: 4%;
+}
+
+.card-body1{
+    padding-left: 35%;
+}
+
+.card-body2{
+    padding-top: 7%
+}
+
+.card-body3{
+    padding-top: 5%;
+    padding-right: 35%;
+}
+
+.card-text2{
+    padding-top: 1%
+}
+
+.card-text3{
+    padding-top: 6%;
+    padding-bottom: 2%;
+}
+
+.redes-sociales{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.fb{
+    width: 50px;
+}
+
+.tw{
+    width: 50px;
+}
+
+.ig{
+    width: 50px;
+}
+
+.padding-bottom-footer{
+    padding-bottom: 5%;
+}
